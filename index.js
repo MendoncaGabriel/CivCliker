@@ -76,19 +76,19 @@ function atualizar(){
     upgradeMineradorVel.innerText = `Minerador 1% mais rápido / Ouro: ${global.mineradores.upgradeVel.toFixed(0)}`
     
 
-    if(global.mineradores.vel < 1000){
+    if(global.mineradores.vel < 3000){
         minerador.innerText = 'Minerador: ' + global.mineradores.qtd + ' / V: ' + global.mineradores.vel.toFixed(0)
     }else{
         minerador.innerText = 'Minerador: ' + global.mineradores.qtd
     }
 
-    if(global.lenhadores.vel < 900){
+    if(global.lenhadores.vel < 2000){
         lenhador.innerText = 'Lenhador: ' + global.lenhadores.qtd + ' / V: ' + global.lenhadores.vel.toFixed(0)
     }else{
         lenhador.innerText = 'Lenhador: ' + global.lenhadores.qtd
     }
 
-    if(global.fazendeiros.vel < 1200){
+    if(global.fazendeiros.vel < 1000){
         fazendeiro.innerText = 'Fazendeio: ' + global.fazendeiros.qtd + ' / V: ' + global.fazendeiros.vel.toFixed(0)
     }else{
         fazendeiro.innerText = 'Fazendeio: ' + global.fazendeiros.qtd
