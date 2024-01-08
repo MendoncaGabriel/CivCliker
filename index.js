@@ -68,12 +68,14 @@ let vender10Comidas = document.getElementById('vender10Comidas')
 
 let upgradeLenhadorVel = document.getElementById('upgradeLenhadorVel')
 let upgradeMineradorVel = document.getElementById('upgradeMineradorVel')
+let upgradeFazendeiroVel = document.getElementById('upgradeFazendeiroVel')
 
 function atualizar(){
     ouro.innerText = 'Ouro: ' + global.ouro.qtd.toFixed(0)
     aldeao.innerText = 'Aldeão: ' + global.aldeoes.qtd.toFixed(0)
     upgradeLenhadorVel.innerText = `Lenhador 1% mais rápido / Ouro: ${global.lenhadores.upgradeVel.toFixed(0)}`
     upgradeMineradorVel.innerText = `Minerador 1% mais rápido / Ouro: ${global.mineradores.upgradeVel.toFixed(0)}`
+    upgradeFazendeiroVel.innerText = `Fazendeiro 1% mais rápido / Ouro: ${global.fazendeiros.upgradeVel.toFixed(0)}`
     
 
     if(global.mineradores.vel < 3000){
@@ -144,6 +146,11 @@ function atualizar(){
         upgradeMineradorVel.style.display = 'block'
     }else{
         upgradeMineradorVel.style.display = 'none'
+    }
+    if(global.ouro.qtd > global.fazendeiros.upgradeVel){
+        upgradeFazendeiroVel.style.display = 'block'
+    }else{
+        upgradeFazendeiroVel.style.display = 'none'
     }
 
 
