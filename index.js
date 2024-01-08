@@ -194,7 +194,7 @@ function upgrade(trabalhador){
     if(trabalhador == 'minerador'){
         if(global.ouro.qtd > global.mineradores.upgradeVel){
             global.ouro.qtd -= global.mineradores.upgradeVel
-            global.mineradores.vel -= (global.mineradores.vel / 100) //-1% mais rapido
+            global.mineradores.vel -= (global.mineradores.vel / 100) //1% mais rapido
             global.mineradores.upgradeVel += ((global.mineradores.upgradeVel/100)*10) //10% mais caro
             
         }else{
@@ -204,8 +204,18 @@ function upgrade(trabalhador){
     if(trabalhador == 'lenhador'){
         if(global.ouro.qtd > global.lenhadores.upgradeVel){
             global.ouro.qtd -= global.lenhadores.upgradeVel
-            global.lenhadores.vel -= (global.lenhadores.vel / 100) //-1%
+            global.lenhadores.vel -= (global.lenhadores.vel / 100) //1% mais rapido
             global.lenhadores.upgradeVel += ((global.lenhadores.upgradeVel/100)*10) //10% mais caro
+
+        }else{
+            alert('Ouro insuficiente!')
+        }
+    }
+    if(trabalhador == 'fazendeiro'){
+        if(global.ouro.qtd > global.fazendeiros.upgradeVel){
+            global.ouro.qtd -= global.fazendeiros.upgradeVel
+            global.fazendeiros.vel -= (global.fazendeiros.vel / 100) //1% mais rapido
+            global.fazendeiros.upgradeVel += ((global.fazendeiros.upgradeVel/100)*10) //10% mais caro
 
         }else{
             alert('Ouro insuficiente!')
