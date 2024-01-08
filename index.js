@@ -96,7 +96,7 @@ function addAldeao() {
     if (global.ouro.qtd >= global.aldeoes.custo) {
         global.aldeoes.qtd++;
         global.ouro.qtd -= global.aldeoes.custo;
-        global.aldeoes.custo += global.aldeoes.custo
+        global.aldeoes.custo += global.aldeoes.custo /2
     }else{
         alert('Ouro insuficiente')
     }
