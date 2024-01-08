@@ -95,7 +95,7 @@ function atualizar(){
     }
 
 
-    btnAldeao.innerText = '+ Aldeão / Custo: ' + global.aldeoes.custo 
+    btnAldeao.innerText = '+ Aldeão / Custo: ' + global.aldeoes.custo.toFixed(0)
 
 
 
