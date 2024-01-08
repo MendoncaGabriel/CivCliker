@@ -1,3 +1,13 @@
+body{
+    background-image: url('https://img.freepik.com/fotos-premium/aldeia-de-arte-de-fundo-de-jogo-estilo-ghibli-com-casas-de-estilo-unico-aldeia-pacifica-e-fofa_398492-11768.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
 button{
     background-color: lightgrey;
     padding: 5px;
@@ -42,6 +52,11 @@ section{
 }
 
 main{
-    max-width: 800px;
+
+    font-size: small;
+    height: 80vh;
+    max-width: 600px;
     margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.883);
 }

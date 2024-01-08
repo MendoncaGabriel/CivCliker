@@ -7,18 +7,18 @@ const global = {
     //trabalhadores
     lenhadores: {
         qtd: 0,
-        vel: 900,
+        vel: 2000,
         upgradeVel: 300
     },
     fazendeiros: {
         qtd: 0,
-        vel: 1200,
-        upgradeVel: 400
+        vel: 1000,
+        upgradeVel: 200
     },
     mineradores: {
         qtd: 0,
-        vel: 1000,
-        upgradeVel: 290,
+        vel: 3000,
+        upgradeVel: 400,
     },
 
     //recursos
@@ -55,9 +55,16 @@ let fazendeiro = document.getElementById('fazendeiro')
 let btnAldeao = document.getElementById('btnAldeao')
 let btnMinerador = document.getElementById('btnMinerador')
 let btnLenhador = document.getElementById('btnLenhador')
+
 let vender10Madeiras = document.getElementById('vender10Madeiras')
+let vender100Madeiras = document.getElementById('vender100Madeiras')
+
 let vender10Pedras = document.getElementById('vender10Pedras')
+let vender100Pedras = document.getElementById('vender100Pedras')
+
 let vender100Comidas = document.getElementById('vender100Comidas')
+let vender10Comidas = document.getElementById('vender10Comidas')
+
 
 let upgradeLenhadorVel = document.getElementById('upgradeLenhadorVel')
 let upgradeMineradorVel = document.getElementById('upgradeMineradorVel')
@@ -89,6 +96,57 @@ function atualizar(){
 
 
     btnAldeao.innerText = '+ Aldeão / Custo: ' + global.aldeoes.custo 
+
+
+
+
+    if(global.recurso.madeira.qtd >= 10){
+        vender10Madeiras.style.display = 'block'
+    }else{
+        vender10Madeiras.style.display = 'none'
+    }
+    if(global.recurso.madeira.qtd >= 100){
+        vender100Madeiras.style.display = 'block'
+    }else{
+        vender100Madeiras.style.display = 'none'
+    }
+
+    if(global.recurso.pedra.qtd >= 10){
+        vender10Pedras.style.display = 'block'
+    }else{
+        vender10Pedras.style.display = 'none'
+    }
+    if(global.recurso.pedra.qtd >= 100){
+        vender100Pedras.style.display = 'block'
+    }else{
+        vender100Pedras.style.display = 'none'
+    }
+
+    if(global.recurso.comida.qtd >= 100){
+        vender100Comidas.style.display = 'block'
+    }else{
+        vender100Comidas.style.display = 'none'
+    }
+    if(global.recurso.comida.qtd >= 10){
+        vender10Comidas.style.display = 'block'
+    }else{
+        vender10Comidas.style.display = 'none'
+    }
+
+
+    if(global.ouro.qtd > global.lenhadores.upgradeVel){
+        upgradeLenhadorVel.style.display = 'block'
+    }else{
+        upgradeLenhadorVel.style.display = 'none'
+    }
+
+    if(global.ouro.qtd > global.mineradores.upgradeVel){
+        upgradeMineradorVel.style.display = 'block'
+    }else{
+        upgradeMineradorVel.style.display = 'none'
+    }
+
+
 }
 
 //comprar----------------------------------------------------------------------------------------
@@ -208,10 +266,6 @@ function venderComida(qtd){
 
 
 //loop de trabalho-------------------------------------------------------------
-
-
-
-
 function pegarPedra(){
     if(global.mineradores.qtd > 0){
         indicadorPedra.style.backgroundColor = 'green'
@@ -260,37 +314,5 @@ atualizar()
 
 
 
-function render(){
-    if(global.recurso.madeira.qtd >= 10){
-        vender10Madeiras.style.display = 'block'
-    }else{
-        vender10Madeiras.style.display = 'none'
-    }
-
-    if(global.recurso.pedra.qtd >= 10){
-        vender10Pedras.style.display = 'block'
-    }else{
-        vender10Pedras.style.display = 'none'
-    }
-
-    if(global.recurso.comida.qtd >= 100){
-        vender100Comidas.style.display = 'block'
-    }else{
-        vender100Comidas.style.display = 'none'
-    }
 
 
-    if(global.ouro.qtd > global.lenhadores.upgradeVel){
-        upgradeLenhadorVel.style.display = 'block'
-    }else{
-        upgradeLenhadorVel.style.display = 'none'
-    }
-    if(global.ouro.qtd > global.mineradores.upgradeVel){
-        upgradeMineradorVel.style.display = 'block'
-    }else{
-        upgradeMineradorVel.style.display = 'none'
-    }
-
-    requestAnimationFrame(render)
-}
-requestAnimationFrame(render)
