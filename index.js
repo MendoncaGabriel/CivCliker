@@ -89,9 +89,9 @@ function atualizar(){
     }
 
     if(global.fazendeiros.vel < 1000){
-        fazendeiro.innerText = 'Fazendeio: ' + global.fazendeiros.qtd + ' / V: ' + global.fazendeiros.vel.toFixed(0)
+        fazendeiro.innerText = 'Fazendeiro: ' + global.fazendeiros.qtd + ' / V: ' + global.fazendeiros.vel.toFixed(0)
     }else{
-        fazendeiro.innerText = 'Fazendeio: ' + global.fazendeiros.qtd
+        fazendeiro.innerText = 'Fazendeiro: ' + global.fazendeiros.qtd
     }
 
 
