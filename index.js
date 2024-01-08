@@ -37,7 +37,7 @@ const global = {
         }
     },
     ouro:{
-        qtd: 70
+        qtd: 709999999
     },
 
 
@@ -70,28 +70,35 @@ let upgradeLenhadorVel = document.getElementById('upgradeLenhadorVel')
 let upgradeMineradorVel = document.getElementById('upgradeMineradorVel')
 let upgradeFazendeiroVel = document.getElementById('upgradeFazendeiroVel')
 
+
+
+
+let loopPegarComida = setInterval(pegarComida, global.fazendeiros.vel)
+let loopPegarMadeira = setInterval(pegarMadeira, global.lenhadores.vel)
+let loopPegarPedra = setInterval(pegarPedra, global.mineradores.vel)
+
 function atualizar(){
     ouro.innerText = 'Ouro: ' + global.ouro.qtd.toFixed(0)
     aldeao.innerText = 'Aldeão: ' + global.aldeoes.qtd.toFixed(0)
-    upgradeLenhadorVel.innerText = `Lenhador 1% mais rápido / Ouro: ${global.lenhadores.upgradeVel.toFixed(0)}`
-    upgradeMineradorVel.innerText = `Minerador 1% mais rápido / Ouro: ${global.mineradores.upgradeVel.toFixed(0)}`
-    upgradeFazendeiroVel.innerText = `Fazendeiro 1% mais rápido / Ouro: ${global.fazendeiros.upgradeVel.toFixed(0)}`
+    upgradeLenhadorVel.innerText = `Lenhador 2% mais rápido / Ouro: ${global.lenhadores.upgradeVel.toFixed(0)}`
+    upgradeMineradorVel.innerText = `Minerador 2% mais rápido / Ouro: ${global.mineradores.upgradeVel.toFixed(0)}`
+    upgradeFazendeiroVel.innerText = `Fazendeiro 2% mais rápido / Ouro: ${global.fazendeiros.upgradeVel.toFixed(0)}`
     
 
     if(global.mineradores.vel < 3000){
-        minerador.innerText = 'Minerador: ' + global.mineradores.qtd + ' / V: ' + global.mineradores.vel.toFixed(0)
+        minerador.innerText = 'Minerador: ' + global.mineradores.qtd + ' / V: ' + (global.mineradores.vel/1000).toFixed(2) + 's'
     }else{
         minerador.innerText = 'Minerador: ' + global.mineradores.qtd
     }
 
     if(global.lenhadores.vel < 2000){
-        lenhador.innerText = 'Lenhador: ' + global.lenhadores.qtd + ' / V: ' + global.lenhadores.vel.toFixed(0)
+        lenhador.innerText = 'Lenhador: ' + global.lenhadores.qtd + ' / V: ' + (global.lenhadores.vel/1000).toFixed(2) + 's'
     }else{
         lenhador.innerText = 'Lenhador: ' + global.lenhadores.qtd
     }
 
     if(global.fazendeiros.vel < 1000){
-        fazendeiro.innerText = 'Fazendeiro: ' + global.fazendeiros.qtd + ' / V: ' + global.fazendeiros.vel.toFixed(0)
+        fazendeiro.innerText = 'Fazendeiro: ' + global.fazendeiros.qtd + ' / V: ' + (global.fazendeiros.vel/1000).toFixed(2) + 's'
     }else{
         fazendeiro.innerText = 'Fazendeiro: ' + global.fazendeiros.qtd
     }
@@ -161,7 +168,7 @@ function addAldeao() {
     if (global.ouro.qtd >= global.aldeoes.custo) {
         global.aldeoes.qtd++;
         global.ouro.qtd -= global.aldeoes.custo;
-        global.aldeoes.custo += global.aldeoes.custo /2
+        global.aldeoes.custo += ((global.aldeoes.custo /100)*10)
     }else{
         alert('Ouro insuficiente')
     }
@@ -201,8 +208,10 @@ function upgrade(trabalhador){
     if(trabalhador == 'minerador'){
         if(global.ouro.qtd > global.mineradores.upgradeVel){
             global.ouro.qtd -= global.mineradores.upgradeVel
-            global.mineradores.vel -= (global.mineradores.vel / 100) //1% mais rapido
-            global.mineradores.upgradeVel += ((global.mineradores.upgradeVel/100)*10) //10% mais caro
+            global.mineradores.vel -= (global.mineradores.vel / 100) * 2 //2% mais rapido
+            global.mineradores.upgradeVel += ((global.mineradores.upgradeVel/100)*10)  //10% mais caro
+            clearInterval(loopPegarPedra)
+            loopPegarPedra = setInterval(pegarPedra, global.mineradores.vel)
             
         }else{
             alert('Ouro insuficiente!')
@@ -211,9 +220,10 @@ function upgrade(trabalhador){
     if(trabalhador == 'lenhador'){
         if(global.ouro.qtd > global.lenhadores.upgradeVel){
             global.ouro.qtd -= global.lenhadores.upgradeVel
-            global.lenhadores.vel -= (global.lenhadores.vel / 100) //1% mais rapido
+            global.lenhadores.vel -= (global.lenhadores.vel / 100) * 2 //2% mais rapido
             global.lenhadores.upgradeVel += ((global.lenhadores.upgradeVel/100)*10) //10% mais caro
-
+            clearInterval(loopPegarMadeira)
+            loopPegarMadeira = setInterval(pegarMadeira, global.lenhadores.vel)
         }else{
             alert('Ouro insuficiente!')
         }
@@ -221,13 +231,17 @@ function upgrade(trabalhador){
     if(trabalhador == 'fazendeiro'){
         if(global.ouro.qtd > global.fazendeiros.upgradeVel){
             global.ouro.qtd -= global.fazendeiros.upgradeVel
-            global.fazendeiros.vel -= (global.fazendeiros.vel / 100) //1% mais rapido
+            global.fazendeiros.vel -= (global.fazendeiros.vel / 100) * 2 //2% mais rapido
+            console.log('Fazendeiros: ' + global.fazendeiros.vel)
             global.fazendeiros.upgradeVel += ((global.fazendeiros.upgradeVel/100)*10) //10% mais caro
 
+            clearInterval(loopPegarComida)
+            loopPegarComida = setInterval(pegarComida, global.fazendeiros.vel)
         }else{
             alert('Ouro insuficiente!')
         }
     }
+    atualizar()
 }
 
 
@@ -283,44 +297,62 @@ function venderComida(qtd){
 
 
 //loop de trabalho-------------------------------------------------------------
+let getPedra = false
 function pegarPedra(){
     if(global.mineradores.qtd > 0){
-        indicadorPedra.style.backgroundColor = 'green'
         indicadorPedra.innerText = `Pedra: ${ global.recurso.pedra.qtd}`
         global.recurso.pedra.qtd += 1 * global.mineradores.qtd
-        atualizar()
-        setTimeout(() => {
+        
+        
+        if(getPedra){
+            getPedra = false
+            indicadorPedra.style.backgroundColor = 'green'
+            atualizar()
+            
+        }else{
+            getPedra = true
             indicadorPedra.style.backgroundColor = 'lightgrey'
-        }, 400);
+        }
+  
     }
 }
-setInterval(pegarPedra, global.mineradores.vel)
 
+let getMadeira = false
 function pegarMadeira(){
     if(global.lenhadores.qtd > 0){
-        indicadorMadeira.style.backgroundColor = 'green'
         indicadorMadeira.innerText = `Madeira: ${ global.recurso.madeira.qtd}`
         global.recurso.madeira.qtd += 1 * global.lenhadores.qtd
-        atualizar()
-        setTimeout(() => {
+        
+        if(getMadeira){
+            getMadeira = false
+            indicadorMadeira.style.backgroundColor = 'green'
+            atualizar()
+        }else{
+            getMadeira = true
             indicadorMadeira.style.backgroundColor = 'lightgrey'
-        }, 400);
+        }
+
     }
 }
-setInterval(pegarMadeira, global.lenhadores.vel)
 
+
+let getComida = false
 function pegarComida(){
     if(global.fazendeiros.qtd > 0){
-        indicadorComida.style.backgroundColor = 'green'
         indicadorComida.innerText = `Comida: ${ global.recurso.comida.qtd}`
         global.recurso.comida.qtd += 1 * global.fazendeiros.qtd
-        atualizar()
-        setTimeout(() => {
+        
+        if(getComida){
+            getComida = false
+            indicadorComida.style.backgroundColor = 'green'
+            atualizar()
+        }else{
+            getComida = true
             indicadorComida.style.backgroundColor = 'lightgrey'
-        }, 400);
+        }
+
     }
 }
-setInterval(pegarComida, global.fazendeiros.vel)
 
 
 atualizar()
