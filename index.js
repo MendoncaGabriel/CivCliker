@@ -4,10 +4,14 @@ atualizar()
 
 import {addAldeao,addLenhador,addFazendeiro,addMinerador} from './purchase.js'
 import {venderComida, venderMadeira, venderPedra} from './sell.js'
-import upgrade from "./upgrade.js";
+import {upgradeFazendeiros, upgradeLenhador, upgradeMinerador} from "./upgrade.js";
 
-function onClickUpgrade(){upgrade()}
-window.upgrade = onClickUpgrade;
+function onClickUpgradeFazendeiros(){upgradeFazendeiros()}
+function onClickUpgradeLenhador(){upgradeLenhador()}
+function onClickUpgradeMinerador(){upgradeMinerador()}
+window.upgradeFazendeiros = onClickUpgradeFazendeiros;
+window.upgradeLenhador = onClickUpgradeLenhador;
+window.upgradeMinerador = onClickUpgradeMinerador;
 
 function onClickAddAldeao() {addAldeao()}
 function onClickAddLenhador() {addLenhador()}

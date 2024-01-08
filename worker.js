@@ -1,10 +1,9 @@
 let getPedra = false;
 let getMadeira = false;
 let getComida = false;
-import global from './global.js';
-import atualizar from './update.js';
-import {indicadorPedra, indicadorComida, indicadorMadeira} from './variables.js'
-
+import global from "./global.js";
+import atualizar from "./update.js";
+import { indicadorPedra, indicadorComida, indicadorMadeira} from "./variables.js";
 
 export function pegarPedra() {
   if (global.mineradores.qtd > 0) {
@@ -21,7 +20,6 @@ export function pegarPedra() {
     }
   }
 }
-
 export function pegarMadeira() {
   if (global.lenhadores.qtd > 0) {
     indicadorMadeira.innerText = `Madeira: ${global.recurso.madeira.qtd}`;
@@ -37,8 +35,6 @@ export function pegarMadeira() {
     }
   }
 }
-
-
 export function pegarComida() {
   if (global.fazendeiros.qtd > 0) {
     indicadorComida.innerText = `Comida: ${global.recurso.comida.qtd}`;
@@ -55,10 +51,17 @@ export function pegarComida() {
   }
 }
 
-
 let loopPegarComida = setInterval(pegarComida, global.fazendeiros.vel);
 let loopPegarMadeira = setInterval(pegarMadeira, global.lenhadores.vel);
 let loopPegarPedra = setInterval(pegarPedra, global.mineradores.vel);
 
-export {loopPegarComida, loopPegarPedra, loopPegarMadeira}
- 
+export function atualizarLoop() {
+  clearInterval(loopPegarComida);
+  clearInterval(loopPegarMadeira);
+  clearInterval(loopPegarPedra);
+  loopPegarComida = setInterval(pegarComida, global.fazendeiros.vel);
+  loopPegarMadeira = setInterval(pegarMadeira, global.lenhadores.vel);
+  loopPegarPedra = setInterval(pegarPedra, global.mineradores.vel);
+}
+
+export { loopPegarComida, loopPegarPedra, loopPegarMadeira };

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <h2>Recursos:</h2>
@@ -15,7 +17,7 @@
             <h2 id="indicadorMadeira">Madeira: 0 </h2>
             <h2 id="indicadorComida">Comida: 0 </h2>
         </section>
-        
+
         <h2>Trabalhadores:</h2>
         <section id="populacao">
             <h2 id="aldeao">Aldeão: 0</h2>
@@ -23,15 +25,15 @@
             <h2 id="lenhador">Lenhador: 0</h2>
             <h2 id="fazendeiro">Fazendeiro: 0</h2>
         </section>
-    
+
         <h2>Comprar:</h2>
         <section>
-            <button onclick="addAldeao()" id="btnAldeao" >+ Aldeão</button>
-            <button onclick="addMinerador()" id="btnMinerador" >+ Minerador</button>
-            <button onclick="addLenhador()" id="btnLenhador" >+ Lenhador</button>
-            <button onclick="addFazendeiro()" id="btnFazendeiro" >+ Fazendeiro</button>
+            <button onclick="addAldeao()" id="btnAldeao">+ Aldeão</button>
+            <button onclick="addMinerador()" id="btnMinerador">+ Minerador</button>
+            <button onclick="addLenhador()" id="btnLenhador">+ Lenhador</button>
+            <button onclick="addFazendeiro()" id="btnFazendeiro">+ Fazendeiro</button>
         </section>
-    
+
         <h2>Vender:</h2>
         <section id="venda">
             <button onclick="venderPedra()" id="vender100Pedras">+100 Pedra</button>
@@ -41,13 +43,14 @@
 
         <h2>Upgrade:</h2>
         <section>
-            <button onclick="upgrade('lenhador')" id="upgradeLenhadorVel">lenhador 2% mais rápido</button>
-            <button onclick="upgrade('minerador')" id="upgradeMineradorVel">Minerador 2% mais rápido</button>
-            <button onclick="upgrade('fazendeiro')" id="upgradeFazendeiroVel">Fazendeiro 2% mais rápido</button>
+            <button onclick="upgradeLenhador()" id="upgradeLenhadorVel">lenhador 2% mais rápido</button>
+            <button onclick="upgradeMinerador()" id="upgradeMineradorVel">Minerador 2% mais rápido</button>
+            <button onclick="upgradeFazendeiros()" id="upgradeFazendeiroVel">Fazendeiro 2% mais rápido</button>
         </section>
     </main>
-   
-    
+
+
 </body>
+
 </html>
-<script type="module" src="script.js"></script>
+<script type="module" src="index.js"></script>
