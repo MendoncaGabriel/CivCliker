@@ -1,0 +1,47 @@
+button{
+    background-color: lightgrey;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#recursos > h2{
+    width: 300px;
+    text-align: center;
+    padding: 5px;
+    background-color: lightgrey;
+
+}
+#recursos{
+    display: flex;
+    gap: 5px;
+    border: 2px solid;
+}
+
+#populacao{
+    display: flex;
+    gap: 5px;
+    border: 2px solid;
+}
+#venda{
+    display: flex;
+    gap: 5px;
+    border: 2px solid;
+}
+
+#populacao > h2{
+    width: 300px;
+    text-align: center;
+    padding: 5px;
+    background-color: lightgrey;
+
+}
+section{
+    border: 2px solid;
+    padding: 5px;
+    gap: 5px;
+}
+
+main{
+    max-width: 800px;
+    margin: auto;
+}

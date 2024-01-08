@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h2>Recursos:</h2>
+        <section id="recursos" class="indicadores">
+            <h2 id="ouro">Ouro: 0</h2>
+            <h2 id="indicadorPedra">Pedra: 0 </h2>
+            <h2 id="indicadorMadeira">Madeira: 0 </h2>
+            <h2 id="indicadorComida">Comida: 0 </h2>
+        </section>
+        
+        <h2>Trabalhadores:</h2>
+        <section id="populacao">
+            <h2 id="aldeao">Aldeão: 0</h2>
+            <h2 id="minerador">Minerador: 0</h2>
+            <h2 id="lenhador">Lenhador: 0</h2>
+            <h2 id="fazendeiro">Fazendeiro: 0</h2>
+        </section>
+    
+        <h2>Comprar:</h2>
+        <section>
+            <button onclick="addAldeao()" id="btnAldeao" >+ Aldeão</button>
+            <button onclick="addMinerador()" id="btnMinerador" >+ Minerador</button>
+            <button onclick="addLenhador()" id="btnLenhador" >+ Lenhador</button>
+            <button onclick="addFazendeiro()" id="btnFazendeiro" >+ Fazendeiro</button>
+        </section>
+    
+        <h2>Vender:</h2>
+        <section id="venda">
+  
+            <button onclick="venderPedra(10)" id="vender10Pedras">+10 Pedra</button>
+            <button onclick="venderMadeira(10)" id="vender10Madeiras">+10 Madeira</button>
+            <button onclick="venderComida(100)" id="vender100Comidas">+100 Madeira</button>
+        </section>
+
+        <h2>Upgrade:</h2>
+        <section>
+            <button onclick="upgrade('lenhador')" id="upgradeLenhadorVel">lenhador 1% mais rápido</button>
+            <button onclick="upgrade('minerador')" id="upgradeMineradorVel">Minerador 1% mais rápido</button>
+        </section>
+    </main>
+   
+    
+</body>
+</html>
+<script src="index.js"></script>
