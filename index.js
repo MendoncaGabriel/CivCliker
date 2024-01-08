@@ -37,7 +37,7 @@ const global = {
         }
     },
     ouro:{
-        qtd: 709999999
+        qtd: 70
     },
 
 
